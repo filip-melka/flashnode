@@ -4,7 +4,8 @@
     "description": "AI-Generated Flashcards for Hashnode Articles",
     "version": "1.0",
     "action": {
-        "default_popup": "disabled-popup.html"
+        "default_popup": "disabled-popup.html",
+        "default_icon": "images/icon-16-disabled.png"
     },
     "background": {
         "service_worker": "scripts/background.js"

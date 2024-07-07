@@ -1,0 +1,46 @@
+:root {
+    --primary: #2863ff;
+    --text: rgb(45, 45, 45);
+    --bg: rgb(247, 247, 247);
+}
+
+body {
+    width: 450px;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: var(--text);
+    background: var(--bg);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+nav > div:first-of-type {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+h1 {
+    font-size: 16px;
+    font-weight: bold;
+}
+#logo {
+    width: 30px;
+    height: 30px;
+}
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 5px;
+    border-radius: 20px;
+}
+.icons img {
+    width: 25px;
+    height: 25px;
+}
