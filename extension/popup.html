@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="styles/popup.css" />
-        <script src="scripts/popup.js" defer></script>
+        <script src="scripts/popup.js" type="module" defer></script>
     </head>
     <body>
         <nav>
@@ -16,8 +16,16 @@
         </nav>
         <main>
             <!-- loader -->
-            <div class="container">
+            <!-- <div class="container">
                 <img id="loader" src="images/loader.svg" alt="Loader" />
+            </div> -->
+            <!-- error -->
+            <div class="container error">
+                <div>
+                    <p>Oooops</p>
+                    <p>Something went wrong</p>
+                </div>
+                <button id="btn-close" class="primary">Close</button>
             </div>
         </main>
     </body>

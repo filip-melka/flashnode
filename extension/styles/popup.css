@@ -10,6 +10,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 #loader {
     animation-name: spin;
@@ -23,4 +24,20 @@ main {
     to {
         rotate: 360deg;
     }
+}
+
+/* error */
+.container.error {
+    justify-content: space-evenly;
+    text-align: center;
+}
+.error p {
+    font-weight: 500;
+    font-size: 22px;
+    margin: 8px;
+}
+.error p:first-of-type {
+    font-weight: 600;
+    font-size: 17px;
+    opacity: 0.6;
 }

@@ -6,6 +6,9 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     })
 })
 
+const closeBtn = document.getElementById("btn-close")
+closeBtn.addEventListener("click", () => window.close())
+
 async function main(url) {
     const host = new URL(url).host
     const slug = url.substring(url.lastIndexOf("/") + 1)
