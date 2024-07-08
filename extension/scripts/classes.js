@@ -20,4 +20,8 @@ export class FlashcardSet {
         this.nextFlashcardIndex++
         return nextFlashcard
     }
+
+    getFlashcardNo() {
+        return this.nextFlashcardIndex
+    }
 }

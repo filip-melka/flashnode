@@ -7,6 +7,10 @@ main {
 div.hidden {
     display: none !important;
 }
+.placeholder {
+    visibility: hidden;
+    pointer-events: none;
+}
 
 /* Loader */
 .container {
@@ -20,6 +24,7 @@ div.hidden {
     animation-name: spin;
     animation-duration: 1s;
     animation-iteration-count: infinite;
+    width: 50px;
 }
 @keyframes spin {
     from {
@@ -30,8 +35,59 @@ div.hidden {
     }
 }
 
+/* flashcards */
+#flashcards-tab {
+    justify-content: space-evenly;
+}
+.progress-bar {
+    background: rgba(0, 0, 0, 0.1);
+    width: 50%;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+#bar {
+    background: blue;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    transition: width 1s linear;
+}
+
+.flashcard-container {
+    width: 80%;
+    background: var(--primary);
+    height: 160px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+#flashcard {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    border: none;
+    background: white;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 150%;
+    transform: translateY(-10px);
+}
+#flashcard.appear {
+    animation-name: appear;
+    animation-duration: 1s;
+}
+
+@keyframes appear {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
 /* error */
-.container.error {
+#error-tab {
     justify-content: space-evenly;
     text-align: center;
 }
