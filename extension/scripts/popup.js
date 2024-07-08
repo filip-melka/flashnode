@@ -1,3 +1,4 @@
+import { fetchFlashcards } from "./dummyData.js"
 import { fetchMarkdown } from "./hashnode.js"
 
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -19,8 +20,12 @@ async function main(url) {
     try {
         const host = new URL(url).host
         const slug = url.substring(url.lastIndexOf("/") + 1)
+
+        // fetch title & markdown
         const { title, markdown } = await fetchMarkdown(slug, host)
-        console.log(title)
+
+        // fetch flashcards
+        const flashcardsSet = await fetchFlashcards(markdown, url, title)
     } catch (error) {
         console.log(error)
         showError()
