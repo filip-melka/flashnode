@@ -62,3 +62,30 @@ button.primary {
     background: var(--primary);
     color: white;
 }
+
+a.primary,
+a.secondary {
+    width: 60%;
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: var(--primary);
+    text-decoration: none;
+    border: 2px solid var(--primary);
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+a.primary {
+    color: white;
+    background: var(--primary);
+}
+a.secondary {
+    color: var(--primary);
+    background: white;
+}
+a img {
+    width: 25px;
+    height: 25px;
+}

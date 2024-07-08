@@ -9,7 +9,7 @@ main {
     height: 170px;
 }
 
-a {
+/* a {
     width: 60%;
     padding: 6px 12px;
     border-radius: 4px;
@@ -29,4 +29,4 @@ a img {
 a:first-of-type {
     background: var(--primary);
     color: white;
-}
+} */

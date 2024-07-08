@@ -16,7 +16,7 @@
         </nav>
         <main>
             <!-- loader -->
-            <div id="loader-tab" class="container">
+            <div id="loader-tab" class="container hidden">
                 <img id="loader" src="images/loader.svg" alt="Loader" />
             </div>
             <!-- flashcards -->
@@ -30,7 +30,29 @@
                 <button id="btn-next" class="primary placeholder">Next</button>
             </div>
             <!-- summary -->
-            <div id="summary-tab" class="container hidden">summary</div>
+            <div id="summary-tab" class="container">
+                <div id="summary-message">
+                    <p>Your Flashcards have been saved.</p>
+                </div>
+                <a
+                    href="http://localhost:3000/"
+                    class="primary"
+                    target="_blank"
+                >
+                    <span>View my Flashcards</span>
+                    <img src="images/link-logo.svg" alt="Link" />
+                </a>
+                <div>
+                    <span>Made possible by</span>
+                    <div class="icons">
+                        <img
+                            src="images/hashnode-logo.svg"
+                            alt="Hashnode logo"
+                        />
+                        <img src="images/openaia-logo.svg" alt="OpenAI logo" />
+                    </div>
+                </div>
+            </div>
             <!-- error -->
             <div id="error-tab" class="container error hidden">
                 <div>
