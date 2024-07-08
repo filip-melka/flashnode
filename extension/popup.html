@@ -9,9 +9,11 @@
                 <img id="logo" src="images/flashnode-logo.svg" alt="logo" />
                 <h1>Flashnode</h1>
             </div>
-            <div class="icons">
-                <img src="images/hashnode-logo.svg" alt="Hashnode logo" />
-                <img src="images/openaia-logo.svg" alt="OpenAI logo" />
+            <div id="save-container" class="hidden">
+                <button id="save-btn">
+                    <div></div>
+                </button>
+                <span id="save-status">Save</span>
             </div>
         </nav>
         <main>
@@ -32,8 +34,7 @@
             <!-- summary -->
             <div id="summary-tab" class="container hidden">
                 <div id="summary-message">
-                    <img src="images/warning-icon.svg" alt="Warning" />
-                    <p>Your Flashcards have been saved.</p>
+                    <p>Your Flashcards are saved.</p>
                 </div>
                 <a
                     href="http://localhost:3000/"
