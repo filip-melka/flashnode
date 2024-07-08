@@ -8,25 +8,3 @@ main {
     gap: 20px;
     height: 170px;
 }
-
-/* a {
-    width: 60%;
-    padding: 6px 12px;
-    border-radius: 4px;
-    color: var(--primary);
-    text-decoration: none;
-    border: 2px solid var(--primary);
-    font-weight: 500;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-a img {
-    width: 25px;
-    height: 25px;
-}
-a:first-of-type {
-    background: var(--primary);
-    color: white;
-} */
