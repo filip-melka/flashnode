@@ -4,6 +4,10 @@ main {
     height: 300px;
 }
 
+div.hidden {
+    display: none !important;
+}
+
 /* Loader */
 .container {
     height: 100%;

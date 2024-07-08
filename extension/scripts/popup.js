@@ -9,11 +9,30 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 const closeBtn = document.getElementById("btn-close")
 closeBtn.addEventListener("click", () => window.close())
 
+const tabs = {
+    loader: document.getElementById("loader-tab"),
+    error: document.getElementById("error-tab"),
+}
+let activeTab = tabs.loader
+
 async function main(url) {
-    const host = new URL(url).host
-    const slug = url.substring(url.lastIndexOf("/") + 1)
-    const { title, markdown } = await fetchMarkdown(slug, host)
-    console.log(title)
+    try {
+        const host = new URL(url).host
+        const slug = url.substring(url.lastIndexOf("/") + 1)
+        const { title, markdown } = await fetchMarkdown(slug, host)
+        console.log(title)
+    } catch (error) {
+        console.log(error)
+        showError()
+    }
 }
 
-function showError() {}
+function showError() {
+    changeTab(tabs.error)
+}
+
+function changeTab(newTab) {
+    activeTab.classList.add("hidden")
+    activeTab = newTab
+    activeTab.classList.remove("hidden")
+}
