@@ -8,6 +8,7 @@ export class Flashcard {
 export class FlashcardSet {
     constructor({ url, title, flashcards }) {
         this.url = url
+        this.title = title
         this.flashcards = flashcards
         this.nextFlashcardIndex = 0
     }

@@ -2,7 +2,7 @@ window.addEventListener("focus", function () {
     checkPage()
 })
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === "getURL") {
         sendResponse({
             url: window.location.href,

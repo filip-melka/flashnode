@@ -1,3 +1,4 @@
+import { Flashcard, FlashcardSet } from "./classes.js"
 import { fetchFlashcards } from "./dummyData.js"
 import { fetchMarkdown } from "./hashnode.js"
 
@@ -31,14 +32,32 @@ let currentFlashcard
 
 async function main(url) {
     try {
-        const host = new URL(url).host
-        const slug = url.substring(url.lastIndexOf("/") + 1)
+        // check whether flashcards for this article are already saved
+        const saved = await retrieveFlashcards(url)
+        console.log("saved", saved)
+        if (saved) {
+            flashcardsSet = new FlashcardSet({
+                url,
+                title: saved.title,
+                flashcards: saved.flashcards,
+            })
 
-        // fetch title & markdown
-        const { title, markdown } = await fetchMarkdown(slug, host)
+            // disable 'save' toggle
+            saveContainer.innerHTML = `<span id="save-status">Saved</span>`
+        } else {
+            const host = new URL(url).host
+            const slug = url.substring(url.lastIndexOf("/") + 1)
 
-        // fetch flashcards
-        flashcardsSet = await fetchFlashcards(markdown, url, title)
+            // fetch title & markdown
+            const { title, markdown } = await fetchMarkdown(slug, host)
+
+            // fetch flashcards
+            flashcardsSet = await fetchFlashcards(markdown, url, title)
+
+            // save the flashcards
+            saveFlashcards(flashcardsSet)
+        }
+
         displayFlashcards()
     } catch (error) {
         console.log(error)
@@ -80,13 +99,15 @@ saveToggle.addEventListener("click", () => {
     if (saveToggle.classList.contains("off")) {
         saveStatus.innerText = "Save"
         saveToggle.classList.remove("off")
-        summaryMsg.innerHTML = "<p>Your Flashcards have been saved.</p>"
+        summaryMsg.innerHTML = "<p>Your Flashcards have been saved</p>"
         // save flashcards
+        saveFlashcards(flashcardsSet)
     } else {
         saveStatus.innerText = "Don't save"
         saveToggle.classList.add("off")
-        summaryMsg.innerHTML = `<img src="images/warning-icon.svg" alt="Warning" /><p>Your Flashcards are not saved.</p>`
+        summaryMsg.innerHTML = `<img src="images/warning-icon.svg" alt="Warning" /><p>Your Flashcards are not saved</p>`
         // remove flashcards from storage
+        removeFlashcards(flashcardsSet.url)
     }
 })
 
@@ -100,4 +121,25 @@ function changeTab(newTab) {
     activeTab.classList.add("hidden")
     activeTab = newTab
     activeTab.classList.remove("hidden")
+}
+
+async function retrieveFlashcards(url) {
+    const set = await chrome.storage.local.get([url])
+    return set[url]
+}
+
+function saveFlashcards(flashcardsSet) {
+    const url = flashcardsSet.url
+    const set = {}
+    set[url] = {
+        title: flashcardsSet.title,
+        flashcards: flashcardsSet.flashcards,
+    }
+    chrome.storage.local.set(set)
+    console.log("data", set)
+}
+
+function removeFlashcards(url) {
+    console.log("remove")
+    chrome.storage.local.remove(url)
 }
