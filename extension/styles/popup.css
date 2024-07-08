@@ -86,6 +86,27 @@ div.hidden {
     }
 }
 
+/* summary */
+#summary-tab {
+    justify-content: space-evenly;
+}
+#summary-message {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.credit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.credit span {
+    font-size: 15px;
+    opacity: 0.7;
+}
+
 /* error */
 #error-tab {
     justify-content: space-evenly;

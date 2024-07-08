@@ -16,7 +16,7 @@
         </nav>
         <main>
             <!-- loader -->
-            <div id="loader-tab" class="container hidden">
+            <div id="loader-tab" class="container">
                 <img id="loader" src="images/loader.svg" alt="Loader" />
             </div>
             <!-- flashcards -->
@@ -30,8 +30,9 @@
                 <button id="btn-next" class="primary placeholder">Next</button>
             </div>
             <!-- summary -->
-            <div id="summary-tab" class="container">
+            <div id="summary-tab" class="container hidden">
                 <div id="summary-message">
+                    <img src="images/warning-icon.svg" alt="Warning" />
                     <p>Your Flashcards have been saved.</p>
                 </div>
                 <a
@@ -42,7 +43,7 @@
                     <span>View my Flashcards</span>
                     <img src="images/link-logo.svg" alt="Link" />
                 </a>
-                <div>
+                <div class="credit">
                     <span>Made possible by</span>
                     <div class="icons">
                         <img

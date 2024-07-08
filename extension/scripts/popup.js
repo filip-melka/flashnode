@@ -17,6 +17,7 @@ const nextBtn = document.getElementById("btn-next")
 const tabs = {
     loader: document.getElementById("loader-tab"),
     flashcards: document.getElementById("flashcards-tab"),
+    summary: document.getElementById("summary-tab"),
     error: document.getElementById("error-tab"),
 }
 let activeTab = tabs.loader
@@ -54,7 +55,7 @@ function nextFlashcard() {
         flashcard.innerHTML = currentFlashcard[currentSide]
         flashcard.className = "appear"
     } else {
-        console.log("done")
+        changeTab(tabs.summary)
     }
 }
 
