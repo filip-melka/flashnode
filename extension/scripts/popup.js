@@ -34,7 +34,6 @@ async function main(url) {
     try {
         // check whether flashcards for this article are already saved
         const saved = await retrieveFlashcards(url)
-        console.log("saved", saved)
         if (saved) {
             flashcardsSet = new FlashcardSet({
                 url,
@@ -56,6 +55,8 @@ async function main(url) {
 
             // save the flashcards
             saveFlashcards(flashcardsSet)
+            // add the url to 'new' flashcards array
+            saveNewFlashcardsURL(url)
         }
 
         displayFlashcards()
@@ -128,6 +129,21 @@ async function retrieveFlashcards(url) {
     return set[url]
 }
 
+function saveNewFlashcardsURL(url) {
+    chrome.storage.local.get("new", (res) => {
+        const urls = res["new"] || []
+        urls.push(url)
+        chrome.storage.local.set({ new: urls })
+    })
+}
+
+function unsaveNewFlashcardsURL(url) {
+    chrome.storage.local.get("new", (res) => {
+        const urls = res["new"].filter((e) => e !== url) || []
+        chrome.storage.local.set({ new: urls })
+    })
+}
+
 function saveFlashcards(flashcardsSet) {
     const url = flashcardsSet.url
     const set = {}
@@ -136,10 +152,10 @@ function saveFlashcards(flashcardsSet) {
         flashcards: flashcardsSet.flashcards,
     }
     chrome.storage.local.set(set)
-    console.log("data", set)
+    saveNewFlashcardsURL(url)
 }
 
 function removeFlashcards(url) {
-    console.log("remove")
     chrome.storage.local.remove(url)
+    unsaveNewFlashcardsURL(url)
 }
