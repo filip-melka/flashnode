@@ -17,7 +17,7 @@ export function SidebarMobile() {
                     <HiMenuAlt4 />
                 </Button>
             </SheetTrigger>
-            <SheetContent side={"left"} className="h-screen">
+            <SheetContent side={"left"}>
                 <SidebarContent />
             </SheetContent>
         </Sheet>

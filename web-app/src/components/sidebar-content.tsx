@@ -16,8 +16,8 @@ export function SidebarContent() {
             </div>
             <Separator className="mt-4 mb-7" />
             <span className="text-sm opacity-70 mb-1">Articles</span>
-            <div className="max-h-full overflow-y-auto hide-scrollbar">
-                {[...data, ...data, ...data].map((article) => (
+            <div className="max-h-full flex-1 overflow-y-auto hide-scrollbar">
+                {data.map((article) => (
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger className="w-full mt-2">
@@ -43,7 +43,7 @@ export function SidebarContent() {
                     </TooltipProvider>
                 ))}
             </div>
-            <div className="flex flex-col items-center gap-2 mt-6">
+            <div className="flex flex-col items-center gap-2 mt-6 mb-4 sm:mb-0">
                 <span className="text-xs opacity-70">Made possible by</span>
                 <div className="bg-black/5 flex items-center justify-center text-2xl gap-4 p-2 rounded-full">
                     <SiHashnode className="text-primary" />
