@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
+import { Sidebar } from "@/components/sidebar"
 
 export const metadata: Metadata = {
     title: "Flashnode",
@@ -13,7 +14,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body>{children}</body>
+            <body>
+                <Sidebar />
+                <main className="sm:ml-sidebar bg-blue-300 px-4 py-12 sm:p-8 md:p-16">
+                    {children}
+                </main>
+            </body>
         </html>
     )
 }
