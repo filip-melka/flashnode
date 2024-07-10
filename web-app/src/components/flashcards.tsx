@@ -24,11 +24,11 @@ export function Flashcards({ flashcards }: { flashcards: Flashcard[] }) {
 
     return (
         <div className="flex static flex-col items-center gap-8">
-            <div className="bg-green-200 w-full lg:w-[80%] max-w-[500px]">
+            <div className="w-full lg:w-[80%] max-w-[500px]">
                 <AspectRatio ratio={8 / 5}>
                     <div
                         onClick={flip}
-                        className="cursor-pointer relative bg-white shadow rounded h-full w-full flex items-center justify-center p-8 overflow-y-auto hide-scrollbar"
+                        className="cursor-pointer relative bg-card shadow rounded h-full w-full flex items-center justify-center p-8 overflow-y-auto hide-scrollbar"
                     >
                         <span className="absolute top-3 left-3 opacity-50 text-sm">
                             {isFront ? "front" : "back"}

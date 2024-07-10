@@ -17,8 +17,8 @@ const config = {
                 "2xl": "1400px",
             },
         },
-        screens: { sm: "800px" },
         extend: {
+            screens: { sm: "800px" },
             width: {
                 sidebar: "350px",
             },

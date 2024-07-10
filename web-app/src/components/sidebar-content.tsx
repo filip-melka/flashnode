@@ -5,6 +5,7 @@ import { Button } from "./ui/button"
 import { Badge } from "./ui/badge"
 import { Tooltip, TooltipContent, TooltipProvider } from "./ui/tooltip"
 import { TooltipTrigger } from "@radix-ui/react-tooltip"
+import { Separator } from "./ui/separator"
 
 export function SidebarContent() {
     return (
@@ -13,7 +14,8 @@ export function SidebarContent() {
                 <Image src="logo.svg" width={30} height={30} alt="Logo" />
                 <h1 className="font-bold text-lg">Flashnode</h1>
             </div>
-            <span className="text-sm opacity-70 mt-8 mb-1">Articles</span>
+            <Separator className="mt-4 mb-7" />
+            <span className="text-sm opacity-70 mb-1">Articles</span>
             <div className="max-h-full overflow-y-auto hide-scrollbar">
                 {[...data, ...data, ...data].map((article) => (
                     <TooltipProvider>
@@ -26,7 +28,7 @@ export function SidebarContent() {
                                     <span className="text-ellipsis overflow-hidden">
                                         {article.title}
                                     </span>
-                                    <Badge variant="outline">
+                                    <Badge variant="secondary">
                                         {article.flashcards.length}
                                     </Badge>
                                 </Button>
