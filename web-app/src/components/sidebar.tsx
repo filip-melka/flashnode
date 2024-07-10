@@ -5,7 +5,7 @@ import { SidebarDesktop } from "./sidebar-desktop"
 import { SidebarMobile } from "./sidebar-mobile"
 
 export function Sidebar() {
-    const isDesktop = useMediaQuery("(min-width: 640px)", {
+    const isDesktop = useMediaQuery("(min-width: 800px)", {
         initializeWithValue: false,
     })
 

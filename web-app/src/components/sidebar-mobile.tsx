@@ -1,4 +1,6 @@
 import { SidebarContent } from "./sidebar-content"
+import { Button } from "./ui/button"
+import { HiMenuAlt4 } from "react-icons/hi"
 import {
     Sheet,
     SheetContent,
@@ -11,7 +13,9 @@ export function SidebarMobile() {
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <button className="fixed top-3 left-3">open</button>
+                <Button variant="ghost" className="fixed top-3 left-3">
+                    <HiMenuAlt4 />
+                </Button>
             </SheetTrigger>
             <SheetContent side={"left"} className="h-screen">
                 <SidebarContent />

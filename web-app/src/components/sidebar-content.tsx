@@ -26,7 +26,10 @@ export function SidebarContent() {
                                     <Badge>{article.flashcards.length}</Badge>
                                 </Button>
                             </TooltipTrigger>
-                            <TooltipContent side="right">
+                            <TooltipContent
+                                side="right"
+                                className="hidden sm:static"
+                            >
                                 <p>{article.title}</p>
                             </TooltipContent>
                         </Tooltip>
