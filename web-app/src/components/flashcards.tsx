@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { Button } from "./ui/button"
 import { AspectRatio } from "./ui/aspect-ratio"
+import { MdNavigateNext } from "react-icons/md"
+import { GrNext, GrPrevious } from "react-icons/gr"
 
 type Flashcard = {
     front: string
@@ -36,17 +38,23 @@ export function Flashcards({ flashcards }: { flashcards: Flashcard[] }) {
                 </AspectRatio>
             </div>
             <div className="flex items-center justify-center gap-8">
-                <Button onClick={() => changeIndex(-1)} disabled={index <= 0}>
-                    Prev
+                <Button
+                    variant="ghost"
+                    onClick={() => changeIndex(-1)}
+                    disabled={index <= 0}
+                >
+                    <GrPrevious />
                 </Button>
                 <p>
-                    <span>{index + 1}</span>/3
+                    <span className="text-2xl pr-1">{index + 1}</span>
+                    <span>/ {flashcards.length}</span>
                 </p>
                 <Button
+                    variant="ghost"
                     onClick={() => changeIndex(1)}
                     disabled={index >= flashcards.length - 1}
                 >
-                    Next
+                    <GrNext />
                 </Button>
             </div>
         </div>

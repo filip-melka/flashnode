@@ -15,11 +15,13 @@ export default function Home() {
     const article = data[0]
     return (
         <main className="sm:ml-sidebar -z-50 p-16 min-h-screen">
-            <div className="flex items-center justify-between mb-12">
+            <div className="flex items-center justify-between mb-12 max-w-[750px] mx-auto">
                 <h2 className="text-xl font-semibold">{article.title}</h2>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
                     <a href={article.url} target="_blank">
-                        <SiHashnode className="text-2xl" />
+                        <Button variant="link" className="p-1">
+                            <SiHashnode className="text-2xl" />
+                        </Button>
                     </a>
                     <Popover>
                         <PopoverTrigger asChild>

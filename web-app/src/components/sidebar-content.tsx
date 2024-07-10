@@ -18,17 +18,22 @@ export function SidebarContent() {
                 {[...data, ...data, ...data].map((article) => (
                     <TooltipProvider>
                         <Tooltip>
-                            <TooltipTrigger className="w-full mt-1">
-                                <Button className="w-full flex items-center justify-between gap-1">
+                            <TooltipTrigger className="w-full mt-2">
+                                <Button
+                                    variant="ghost"
+                                    className="w-full flex items-center justify-between gap-2"
+                                >
                                     <span className="text-ellipsis overflow-hidden">
                                         {article.title}
                                     </span>
-                                    <Badge>{article.flashcards.length}</Badge>
+                                    <Badge variant="outline">
+                                        {article.flashcards.length}
+                                    </Badge>
                                 </Button>
                             </TooltipTrigger>
                             <TooltipContent
                                 side="right"
-                                className="hidden sm:static"
+                                className="hidden sm:block"
                             >
                                 <p>{article.title}</p>
                             </TooltipContent>
@@ -39,7 +44,7 @@ export function SidebarContent() {
             <div className="flex flex-col items-center gap-2 mt-6">
                 <span className="text-xs opacity-70">Made possible by</span>
                 <div className="bg-black/5 flex items-center justify-center text-2xl gap-4 p-2 rounded-full">
-                    <SiHashnode />
+                    <SiHashnode className="text-primary" />
                     <SiOpenai />
                 </div>
             </div>
