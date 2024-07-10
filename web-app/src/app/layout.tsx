@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import { Sidebar } from "@/components/sidebar"
+import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export const metadata: Metadata = {
     title: "Flashnode",
@@ -15,8 +17,16 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                {children}
-                <Sidebar />
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <ThemeToggle />
+                    {children}
+                    <Sidebar />
+                </ThemeProvider>
             </body>
         </html>
     )
