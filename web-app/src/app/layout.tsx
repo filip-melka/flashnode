@@ -3,6 +3,7 @@ import "./globals.css"
 import { Sidebar } from "@/components/sidebar"
 import { ThemeProvider } from "@/components/theme-provider"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { FlashcardsProvider } from "@/lib/flashcardsContext"
 
 export const metadata: Metadata = {
     title: "Flashnode",
@@ -17,16 +18,18 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                    disableTransitionOnChange
-                >
-                    <ThemeToggle />
-                    {children}
-                    <Sidebar />
-                </ThemeProvider>
+                <FlashcardsProvider>
+                    <ThemeProvider
+                        attribute="class"
+                        defaultTheme="system"
+                        enableSystem
+                        disableTransitionOnChange
+                    >
+                        <ThemeToggle />
+                        {children}
+                        <Sidebar />
+                    </ThemeProvider>
+                </FlashcardsProvider>
             </body>
         </html>
     )
