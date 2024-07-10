@@ -19,10 +19,10 @@ const config = {
         },
         extend: {
             width: {
-                sidebar: "270px",
+                sidebar: "350px",
             },
             spacing: {
-                sidebar: "270px",
+                sidebar: "350px",
             },
             colors: {
                 border: "hsl(var(--border))",

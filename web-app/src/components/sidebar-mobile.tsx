@@ -1,3 +1,4 @@
+import { SidebarContent } from "./sidebar-content"
 import {
     Sheet,
     SheetContent,
@@ -13,10 +14,7 @@ export function SidebarMobile() {
                 <button className="fixed top-3 left-3">open</button>
             </SheetTrigger>
             <SheetContent side={"left"} className="h-screen">
-                <SheetHeader>
-                    <SheetTitle>Title</SheetTitle>
-                </SheetHeader>
-                <div className="w-full">Sidebar</div>
+                <SidebarContent />
             </SheetContent>
         </Sheet>
     )
