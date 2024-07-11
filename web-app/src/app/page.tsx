@@ -48,7 +48,7 @@ export default function Home() {
                 <main className="p-16">loading</main>
             ) : (
                 <main className="sm:ml-sidebar -z-50 p-16 min-h-screen">
-                    <div className="flex items-center justify-between mb-12 max-w-[750px] mx-auto">
+                    <div className="flex items-center gap-3 justify-between mb-12 max-w-[750px] mx-auto">
                         <h2 className="text-xl font-semibold">
                             {currentSet.title}
                         </h2>
