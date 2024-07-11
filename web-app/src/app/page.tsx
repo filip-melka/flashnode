@@ -6,18 +6,18 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import { data } from "@/lib/dummy-data"
 import { SiHashnode } from "react-icons/si"
 import { FiMoreVertical } from "react-icons/fi"
 import { Flashcards } from "@/components/flashcards"
 import { useEffect } from "react"
 import { FlashcardsSet, useFlashcards } from "@/lib/flashcardsContext"
+import Image from "next/image"
 
 export default function Home() {
     const { addSets, sets, currentSet, setCurrentSet } = useFlashcards()
 
     function init() {
-        const flashcardsSets: FlashcardsSet[] = data
+        const flashcardsSets: FlashcardsSet[] = []
 
         addSets(flashcardsSets)
 
@@ -45,7 +45,15 @@ export default function Home() {
     return (
         <>
             {!currentSet ? (
-                <main className="p-16">loading</main>
+                <main className="p-16 min-h-screen flex items-center justify-center">
+                    <Image
+                        src="loader.svg"
+                        width={60}
+                        height={60}
+                        alt="Loader"
+                        className="animate-spin"
+                    />
+                </main>
             ) : (
                 <main className="sm:ml-sidebar -z-50 p-16 min-h-screen">
                     <div className="flex items-center gap-3 justify-between mb-12 max-w-[750px] mx-auto">
