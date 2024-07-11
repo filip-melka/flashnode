@@ -15,6 +15,10 @@ export const data = [
                 front: "Front",
                 back: "Back",
             },
+            {
+                front: "Front",
+                back: "Back",
+            },
         ],
     },
     {
@@ -39,10 +43,6 @@ export const data = [
         url: "https://blog.bytescrum.com/how-to-build-a-google-chrome-extension-step-by-step-guide",
         title: "How to Build a Google Chrome Extension: Step-by-Step Guide",
         flashcards: [
-            {
-                front: "Front",
-                back: "Back",
-            },
             {
                 front: "Front",
                 back: "Back",
@@ -93,6 +93,14 @@ export const data = [
         url: "https://chetan77.hashnode.dev/27-java-multithreading-4-atomic-variables",
         title: "27 Java - Multithreading 4 (Atomic Variables)",
         flashcards: [
+            {
+                front: "Front",
+                back: "Back",
+            },
+            {
+                front: "Front",
+                back: "Back",
+            },
             {
                 front: "Front",
                 back: "Back",

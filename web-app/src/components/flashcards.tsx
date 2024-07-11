@@ -1,15 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "./ui/button"
 import { AspectRatio } from "./ui/aspect-ratio"
-import { MdNavigateNext } from "react-icons/md"
 import { GrNext, GrPrevious } from "react-icons/gr"
+import { useFlashcards } from "@/lib/flashcardsContext"
 
 type Flashcard = {
     front: string
     back: string
 }
 
-export function Flashcards({ flashcards }: { flashcards: Flashcard[] }) {
+export function Flashcards() {
+    const { currentSet } = useFlashcards()
     const [index, setIndex] = useState(0)
     const [isFront, setIsFront] = useState(true)
 
@@ -22,6 +23,11 @@ export function Flashcards({ flashcards }: { flashcards: Flashcard[] }) {
         setIndex((current) => current + val)
     }
 
+    useEffect(() => {
+        setIndex(0)
+        setIsFront(true)
+    }, [currentSet])
+
     return (
         <div className="flex static flex-col items-center gap-8">
             <div className="w-full lg:w-[80%] max-w-[500px]">
@@ -33,7 +39,13 @@ export function Flashcards({ flashcards }: { flashcards: Flashcard[] }) {
                         <span className="absolute top-3 left-3 opacity-50 text-sm">
                             {isFront ? "front" : "back"}
                         </span>
-                        <p>{flashcards[index][isFront ? "front" : "back"]}</p>
+                        <p>
+                            {
+                                currentSet!.flashcards[index][
+                                    isFront ? "front" : "back"
+                                ]
+                            }
+                        </p>
                     </div>
                 </AspectRatio>
             </div>
@@ -47,12 +59,12 @@ export function Flashcards({ flashcards }: { flashcards: Flashcard[] }) {
                 </Button>
                 <p>
                     <span className="text-2xl pr-1">{index + 1}</span>
-                    <span>/ {flashcards.length}</span>
+                    <span>/ {currentSet!.flashcards.length}</span>
                 </p>
                 <Button
                     variant="ghost"
                     onClick={() => changeIndex(1)}
-                    disabled={index >= flashcards.length - 1}
+                    disabled={index >= currentSet!.flashcards.length - 1}
                 >
                     <GrNext />
                 </Button>
