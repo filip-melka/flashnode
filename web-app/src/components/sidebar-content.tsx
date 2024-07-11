@@ -1,13 +1,21 @@
-import { data } from "@/lib/dummy-data"
 import Image from "next/image"
 import { SiHashnode, SiOpenai } from "react-icons/si"
+import { Separator } from "./ui/separator"
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "./ui/tooltip"
+import { data } from "@/lib/dummy-data"
 import { Button } from "./ui/button"
 import { Badge } from "./ui/badge"
-import { Tooltip, TooltipContent, TooltipProvider } from "./ui/tooltip"
-import { TooltipTrigger } from "@radix-ui/react-tooltip"
-import { Separator } from "./ui/separator"
 
-export function SidebarContent() {
+export function SidebarContent({
+    articleButtons,
+}: {
+    articleButtons: React.ReactNode
+}) {
     return (
         <div className="h-screen w-full p-8 flex flex-col">
             <div className="flex items-center gap-2">
@@ -17,8 +25,8 @@ export function SidebarContent() {
             <Separator className="mt-4 mb-7" />
             <span className="text-sm opacity-70 mb-1">Articles</span>
             <div className="max-h-full flex-1 overflow-y-auto hide-scrollbar">
-                {data.map((article) => (
-                    <TooltipProvider>
+                <TooltipProvider>
+                    {data.map((article) => (
                         <Tooltip>
                             <TooltipTrigger className="w-full mt-2">
                                 <Button
@@ -33,15 +41,12 @@ export function SidebarContent() {
                                     </Badge>
                                 </Button>
                             </TooltipTrigger>
-                            <TooltipContent
-                                side="right"
-                                className="hidden sm:block"
-                            >
+                            <TooltipContent side="right">
                                 <p>{article.title}</p>
                             </TooltipContent>
                         </Tooltip>
-                    </TooltipProvider>
-                ))}
+                    ))}
+                </TooltipProvider>
             </div>
             <div className="flex flex-col items-center gap-2 mt-6 mb-4 sm:mb-0">
                 <span className="text-xs opacity-70">Made possible by</span>
