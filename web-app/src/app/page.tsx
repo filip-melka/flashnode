@@ -17,19 +17,45 @@ export default function Home() {
     const { addSets, sets, currentSet, setCurrentSet } = useFlashcards()
 
     function init() {
+        // this will be removed
         const flashcardsSets: FlashcardsSet[] = []
+
+        if (
+            typeof window !== "undefined" &&
+            window.chrome &&
+            window.chrome.runtime
+        ) {
+            window.chrome.runtime.sendMessage(
+                process.env.NEXT_PUBLIC_EXTENSION_ID as string,
+                { action: "getAllSets" },
+                (res: any) => {
+                    console.log(res)
+                }
+            )
+        }
 
         addSets(flashcardsSets)
 
         if (currentSet === null) {
             setCurrentSet(flashcardsSets[0])
-            console.log("->", currentSet, flashcardsSets[0])
         }
     }
 
     function getNewFlashcards() {
         if (document.visibilityState === "visible") {
-            console.log("get new flashcards")
+            if (
+                typeof window !== "undefined" &&
+                window.chrome &&
+                window.chrome.runtime
+            ) {
+                window.chrome.runtime.sendMessage(
+                    process.env.NEXT_PUBLIC_EXTENSION_ID as string,
+                    { action: "getNewSets" },
+                    (res: any) => {
+                        console.log(res)
+                    }
+                )
+            }
         }
     }
 

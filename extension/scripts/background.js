@@ -18,3 +18,13 @@ function setIsEnabled(isEnabled) {
         })
     })
 }
+
+chrome.runtime.onMessageExternal.addListener(
+    (request, sender, sendResponse) => {
+        if (request.action === "getAllSets") {
+            sendResponse("all sets")
+        } else if (request.action === "getNewSets") {
+            sendResponse("new sets")
+        }
+    }
+)
