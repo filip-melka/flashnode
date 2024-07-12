@@ -1,7 +1,6 @@
 import { useFlashcards } from "@/lib/flashcardsContext"
 import { Button } from "./ui/button"
 import { Badge } from "./ui/badge"
-import { SiHashnode, SiOpenai } from "react-icons/si"
 import Image from "next/image"
 import { Separator } from "./ui/separator"
 import {
@@ -10,6 +9,7 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "./ui/tooltip"
+import { SidebarFooter } from "./sidebar-footer"
 
 export function SidebarDesktop() {
     const { sets, currentSet, setCurrentSet } = useFlashcards()
@@ -26,7 +26,7 @@ export function SidebarDesktop() {
                 <div className="max-h-full flex-1 overflow-y-auto hide-scrollbar">
                     <TooltipProvider>
                         {sets.map((set) => (
-                            <Tooltip>
+                            <Tooltip key={set.url}>
                                 <TooltipTrigger className="w-full mt-2" asChild>
                                     <Button
                                         variant="ghost"
@@ -49,13 +49,7 @@ export function SidebarDesktop() {
                         ))}
                     </TooltipProvider>
                 </div>
-                <div className="flex flex-col items-center gap-2 mt-6 mb-4 sm:mb-0">
-                    <span className="text-xs opacity-70">Made possible by</span>
-                    <div className="bg-black/5 flex items-center justify-center text-2xl gap-4 p-2 rounded-full">
-                        <SiHashnode className="text-primary" />
-                        <SiOpenai />
-                    </div>
-                </div>
+                <SidebarFooter />
             </div>
         </aside>
     )
