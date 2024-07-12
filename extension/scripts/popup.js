@@ -1,6 +1,11 @@
-import { Flashcard, FlashcardSet } from "./classes.js"
+import { FlashcardSet } from "./classes.js"
 import { fetchFlashcards } from "./dummyData.js"
 import { fetchMarkdown } from "./hashnode.js"
+import {
+    removeFlashcards,
+    retrieveFlashcards,
+    saveFlashcards,
+} from "./utils.js"
 
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.tabs.sendMessage(tabs[0].id, { action: "getURL" }, (res) => {
@@ -120,50 +125,4 @@ function changeTab(newTab) {
     activeTab.classList.add("hidden")
     activeTab = newTab
     activeTab.classList.remove("hidden")
-}
-
-async function retrieveFlashcards(url) {
-    const set = await chrome.storage.local.get([url])
-    return set[url]
-}
-
-function saveFlashcards(flashcardsSet) {
-    const url = flashcardsSet.url
-    const set = {}
-    set[url] = {
-        title: flashcardsSet.title,
-        flashcards: flashcardsSet.flashcards,
-    }
-    chrome.storage.local.set(set)
-    addToList("all", url)
-    addToList("new", url)
-}
-
-function removeFlashcards(url) {
-    chrome.storage.local.remove(url)
-    removeFromList("all", url)
-    removeFromList("new", url)
-}
-
-function addToList(list, url) {
-    chrome.storage.local.get(list, (res) => {
-        const urls = res[list] || []
-        urls.push(url)
-
-        const obj = {}
-        obj[list] = urls
-
-        chrome.storage.local.set(obj)
-    })
-}
-
-function removeFromList(list, url) {
-    chrome.storage.local.get(list, (res) => {
-        const urls = res[list].filter((e) => e !== url) || []
-
-        const obj = {}
-        obj[list] = urls
-
-        chrome.storage.local.set(obj)
-    })
 }

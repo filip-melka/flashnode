@@ -1,3 +1,5 @@
+import { retrieveAllFlashcards } from "./utils.js"
+
 chrome.runtime.onMessage.addListener((req) => {
     setIsEnabled(req.isEnabled)
 })
@@ -19,10 +21,12 @@ function setIsEnabled(isEnabled) {
     })
 }
 
+// listen for messages from the web app
 chrome.runtime.onMessageExternal.addListener(
-    (request, sender, sendResponse) => {
+    async (request, sender, sendResponse) => {
         if (request.action === "getAllSets") {
-            sendResponse("all sets")
+            const flashcards = await retrieveAllFlashcards()
+            sendResponse(flashcards)
         } else if (request.action === "getNewSets") {
             sendResponse("new sets")
         }
