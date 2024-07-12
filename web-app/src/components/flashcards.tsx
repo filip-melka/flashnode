@@ -4,11 +4,6 @@ import { AspectRatio } from "./ui/aspect-ratio"
 import { GrNext, GrPrevious } from "react-icons/gr"
 import { useFlashcards } from "@/lib/flashcardsContext"
 
-type Flashcard = {
-    front: string
-    back: string
-}
-
 export function Flashcards() {
     const { currentSet } = useFlashcards()
     const [index, setIndex] = useState(0)
@@ -39,7 +34,7 @@ export function Flashcards() {
                         <span className="absolute top-3 left-3 opacity-50 text-sm">
                             {isFront ? "front" : "back"}
                         </span>
-                        <p>
+                        <p className="text-center">
                             {
                                 currentSet!.flashcards[index][
                                     isFront ? "front" : "back"
