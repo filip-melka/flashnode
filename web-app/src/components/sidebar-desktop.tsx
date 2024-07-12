@@ -12,7 +12,7 @@ import {
 } from "./ui/tooltip"
 
 export function SidebarDesktop() {
-    const { sets, setCurrentSet } = useFlashcards()
+    const { sets, currentSet, setCurrentSet } = useFlashcards()
 
     return (
         <aside className="w-sidebar fixed left-0 top-0 h-screen border-r">
@@ -27,11 +27,12 @@ export function SidebarDesktop() {
                     <TooltipProvider>
                         {sets.map((set) => (
                             <Tooltip>
-                                <TooltipTrigger className="w-full mt-2">
+                                <TooltipTrigger className="w-full mt-2" asChild>
                                     <Button
                                         variant="ghost"
-                                        className="w-full flex items-center justify-between gap-2"
+                                        className="w-full flex items-center justify-between gap-2 disabled:opacity-100 disabled:bg-accent"
                                         onClick={() => setCurrentSet(set)}
+                                        disabled={currentSet?.url === set.url}
                                     >
                                         <span className="text-ellipsis overflow-hidden">
                                             {set.title}

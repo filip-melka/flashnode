@@ -114,7 +114,7 @@ export default function Home() {
                     ) : (
                         <main className="sm:ml-sidebar -z-50 p-16 min-h-screen">
                             <div className="flex items-center gap-3 md:gap-5 justify-between mb-12 max-w-[750px] mx-auto">
-                                <h2 className="text-xl font-semibold">
+                                <h2 className="text-lg sm:text-md lg:text-xl font-semibold">
                                     {currentSet.title}
                                 </h2>
                                 <div className="flex items-center gap-2">
