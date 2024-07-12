@@ -55,8 +55,6 @@ async function main(url) {
 
             // save the flashcards
             saveFlashcards(flashcardsSet)
-            // add the url to 'new' flashcards array
-            saveNewFlashcardsURL(url)
         }
 
         displayFlashcards()
@@ -129,21 +127,6 @@ async function retrieveFlashcards(url) {
     return set[url]
 }
 
-function saveNewFlashcardsURL(url) {
-    chrome.storage.local.get("new", (res) => {
-        const urls = res["new"] || []
-        urls.push(url)
-        chrome.storage.local.set({ new: urls })
-    })
-}
-
-function unsaveNewFlashcardsURL(url) {
-    chrome.storage.local.get("new", (res) => {
-        const urls = res["new"].filter((e) => e !== url) || []
-        chrome.storage.local.set({ new: urls })
-    })
-}
-
 function saveFlashcards(flashcardsSet) {
     const url = flashcardsSet.url
     const set = {}
@@ -152,10 +135,35 @@ function saveFlashcards(flashcardsSet) {
         flashcards: flashcardsSet.flashcards,
     }
     chrome.storage.local.set(set)
-    saveNewFlashcardsURL(url)
+    addToList("all", url)
+    addToList("new", url)
 }
 
 function removeFlashcards(url) {
     chrome.storage.local.remove(url)
-    unsaveNewFlashcardsURL(url)
+    removeFromList("all", url)
+    removeFromList("new", url)
+}
+
+function addToList(list, url) {
+    chrome.storage.local.get(list, (res) => {
+        const urls = res[list] || []
+        urls.push(url)
+
+        const obj = {}
+        obj[list] = urls
+
+        chrome.storage.local.set(obj)
+    })
+}
+
+function removeFromList(list, url) {
+    chrome.storage.local.get(list, (res) => {
+        const urls = res[list].filter((e) => e !== url) || []
+
+        const obj = {}
+        obj[list] = urls
+
+        chrome.storage.local.set(obj)
+    })
 }
