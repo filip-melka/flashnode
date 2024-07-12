@@ -101,7 +101,7 @@ export default function Home() {
                             <p className="text-xl">
                                 Looks like you don't have any flashcards yet 🤷‍♂️
                             </p>
-                            <a href="https://hashnode.com/">
+                            <a href="https://hashnode.com/" target="_blank">
                                 <Button
                                     variant="default"
                                     className="flex items-center gap-6 text-md"
