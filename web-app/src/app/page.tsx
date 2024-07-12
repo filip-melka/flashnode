@@ -69,7 +69,7 @@ export default function Home() {
         }
         window.chrome.runtime.sendMessage(
             process.env.NEXT_PUBLIC_EXTENSION_ID as string,
-            { action: "remomeSet", url: set?.url }
+            { action: "removeSet", url: set?.url }
         )
     }
 
@@ -106,7 +106,7 @@ export default function Home() {
                                     variant="default"
                                     className="flex items-center gap-6 text-md"
                                 >
-                                    <span>Got to Hashnode</span>
+                                    <span>Go to Hashnode</span>
                                     <SiHashnode />
                                 </Button>
                             </a>
