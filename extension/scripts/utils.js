@@ -1,5 +1,3 @@
-import { FlashcardSet } from "./classes.js"
-
 export async function retrieveAllFlashcards() {
     const { all: urls } = await chrome.storage.local.get("all")
     if (urls && urls.length > 0) {
@@ -15,6 +13,30 @@ export async function retrieveAllFlashcards() {
             }
             flashcardsSets.push(flashcardsSet)
         })
+
+        return flashcardsSets
+    } else {
+        return []
+    }
+}
+
+export async function retrieveNewFlashcards() {
+    const { new: urls } = await chrome.storage.local.get("new")
+    if (urls && urls.length > 0) {
+        const sets = await chrome.storage.local.get(urls)
+        const flashcardsSets = []
+
+        Object.keys(sets).forEach((url) => {
+            const set = sets[url]
+            const flashcardsSet = {
+                url,
+                title: set.title,
+                flashcards: set.flashcards,
+            }
+            flashcardsSets.push(flashcardsSet)
+        })
+
+        clearList("new")
 
         return flashcardsSets
     } else {
@@ -57,7 +79,7 @@ export function addToList(list, url) {
     })
 }
 
-export function removeFromList(list, url) {
+function removeFromList(list, url) {
     chrome.storage.local.get(list, (res) => {
         const urls = res[list].filter((e) => e !== url) || []
 
@@ -66,4 +88,8 @@ export function removeFromList(list, url) {
 
         chrome.storage.local.set(obj)
     })
+}
+
+function clearList(list) {
+    chrome.storage.local.remove(list)
 }
