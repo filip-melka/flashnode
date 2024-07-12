@@ -12,9 +12,10 @@ import { Flashcards } from "@/components/flashcards"
 import { useEffect, useState } from "react"
 import { FlashcardsSet, useFlashcards } from "@/lib/flashcardsContext"
 import Image from "next/image"
+import { PopoverClose } from "@radix-ui/react-popover"
 
 export default function Home() {
-    const { addSets, sets, currentSet, setCurrentSet } = useFlashcards()
+    const { addSets, currentSet, setCurrentSet, removeSet } = useFlashcards()
     const [isFetching, setIsFetching] = useState(true)
 
     function init() {
@@ -59,6 +60,17 @@ export default function Home() {
                 )
             }
         }
+    }
+
+    function removeCurrentSet() {
+        const set = currentSet
+        if (set) {
+            removeSet(set)
+        }
+        window.chrome.runtime.sendMessage(
+            process.env.NEXT_PUBLIC_EXTENSION_ID as string,
+            { action: "remomeSet", url: set?.url }
+        )
     }
 
     useEffect(() => {
@@ -121,12 +133,15 @@ export default function Home() {
                                             </Button>
                                         </PopoverTrigger>
                                         <PopoverContent className="p-1 w-fit">
-                                            <Button
-                                                variant="destructive"
-                                                className="px-6"
-                                            >
-                                                Delete Set
-                                            </Button>
+                                            <PopoverClose>
+                                                <Button
+                                                    variant="destructive"
+                                                    className="px-6"
+                                                    onClick={removeCurrentSet}
+                                                >
+                                                    Delete Set
+                                                </Button>
+                                            </PopoverClose>
                                         </PopoverContent>
                                     </Popover>
                                 </div>

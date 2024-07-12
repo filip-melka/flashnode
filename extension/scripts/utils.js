@@ -64,7 +64,6 @@ export function saveFlashcards(flashcardsSet) {
 export function removeFlashcards(url) {
     chrome.storage.local.remove(url)
     removeFromList("all", url)
-    removeFromList("new", url)
 }
 
 export function addToList(list, url) {

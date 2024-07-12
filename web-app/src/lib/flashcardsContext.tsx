@@ -32,9 +32,15 @@ export const FlashcardsProvider: React.FC<{ children: React.ReactNode }> = ({
     const [currentSet, setCurrentSet] = useState<FlashcardsSet | null>(null)
 
     function addSets(sets: FlashcardsSet[]) {
-        setSets((current) => [...sets, ...current])
+        setSets((current) =>
+            [...sets, ...current].sort((a, b) => a.title.localeCompare(b.title))
+        )
     }
-    function removeSet(set: FlashcardsSet) {}
+    function removeSet(set: FlashcardsSet) {
+        const newSets = sets.filter((s) => s.url !== set.url)
+        setSets(newSets)
+        setCurrentSet(newSets.length > 0 ? newSets[0] : null)
+    }
 
     return (
         <FlashcardsContext.Provider

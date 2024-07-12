@@ -1,4 +1,8 @@
-import { retrieveAllFlashcards, retrieveNewFlashcards } from "./utils.js"
+import {
+    removeFlashcards,
+    retrieveAllFlashcards,
+    retrieveNewFlashcards,
+} from "./utils.js"
 
 chrome.runtime.onMessage.addListener((req) => {
     setIsEnabled(req.isEnabled)
@@ -30,6 +34,8 @@ chrome.runtime.onMessageExternal.addListener(
         } else if (request.action === "getNewSets") {
             const flashcards = await retrieveNewFlashcards()
             sendResponse(flashcards)
+        } else if (request.action === "removeSet") {
+            removeFlashcards(request.url)
         }
     }
 )
