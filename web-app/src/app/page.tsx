@@ -13,8 +13,10 @@ import { useEffect, useState } from "react"
 import { FlashcardsSet, useFlashcards } from "@/lib/flashcardsContext"
 import Image from "next/image"
 import { PopoverClose } from "@radix-ui/react-popover"
+import { useToast } from "@/components/ui/use-toast"
 
 export default function Home() {
+    const { toast } = useToast()
     const { addSets, currentSet, setCurrentSet, removeSet } = useFlashcards()
     const [isFetching, setIsFetching] = useState(true)
 
@@ -28,10 +30,12 @@ export default function Home() {
                 process.env.NEXT_PUBLIC_EXTENSION_ID as string,
                 { action: "getAllSets" },
                 (newSets: FlashcardsSet[]) => {
-                    addSets(newSets)
+                    if (newSets.length > 0) {
+                        addSets(newSets)
 
-                    if (currentSet === null && newSets.length > 0) {
-                        setCurrentSet(newSets[0])
+                        if (currentSet === null) {
+                            setCurrentSet(newSets[0])
+                        }
                     }
 
                     setIsFetching(false)
@@ -51,10 +55,21 @@ export default function Home() {
                     process.env.NEXT_PUBLIC_EXTENSION_ID as string,
                     { action: "getNewSets" },
                     (newSets: FlashcardsSet[]) => {
-                        addSets(newSets)
+                        if (newSets.length > 0) {
+                            addSets(newSets)
 
-                        if (currentSet === null && newSets.length > 0) {
-                            setCurrentSet(newSets[0])
+                            toast({
+                                title: "New Flashcards Added",
+                                description: `${newSets.length} new ${
+                                    newSets.length === 1
+                                        ? "set was"
+                                        : "sets were"
+                                } added to your collection`,
+                            })
+
+                            if (currentSet === null) {
+                                setCurrentSet(newSets[0])
+                            }
                         }
                     }
                 )
@@ -66,11 +81,14 @@ export default function Home() {
         const set = currentSet
         if (set) {
             removeSet(set)
+            window.chrome.runtime.sendMessage(
+                process.env.NEXT_PUBLIC_EXTENSION_ID as string,
+                { action: "removeSet", url: set.url }
+            )
+            toast({
+                title: "Flashcards have been deleted",
+            })
         }
-        window.chrome.runtime.sendMessage(
-            process.env.NEXT_PUBLIC_EXTENSION_ID as string,
-            { action: "removeSet", url: set?.url }
-        )
     }
 
     useEffect(() => {
@@ -133,7 +151,7 @@ export default function Home() {
                                             </Button>
                                         </PopoverTrigger>
                                         <PopoverContent className="p-1 w-fit">
-                                            <PopoverClose>
+                                            <PopoverClose asChild>
                                                 <Button
                                                     variant="destructive"
                                                     className="px-6"

@@ -4,6 +4,7 @@ import { Sidebar } from "@/components/sidebar"
 import { ThemeProvider } from "@/components/theme-provider"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { FlashcardsProvider } from "@/lib/flashcardsContext"
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
     title: "Flashnode",
@@ -28,6 +29,7 @@ export default function RootLayout({
                         <ThemeToggle />
                         {children}
                         <Sidebar />
+                        <Toaster />
                     </ThemeProvider>
                 </FlashcardsProvider>
             </body>
