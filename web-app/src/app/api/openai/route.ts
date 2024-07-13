@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     try {
         const { markdown, title } = await req.json()
 
-        const res = await openai.chat.completions.create({
+        /* const res = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
             messages: [
                 {
@@ -38,9 +38,9 @@ export async function POST(req: Request) {
         console.log(JSON.stringify(res))
 
         const data = res.choices[0].message.content as string
-        const finishReason = res.choices[0].finish_reason
+        const finishReason = res.choices[0].finish_reason */
 
-        /* const data = `Q: What is Test-Driven Development (TDD) and what are the main steps involved in the TDD cycle?
+        const data = `Q: What is Test-Driven Development (TDD) and what are the main steps involved in the TDD cycle?
 A: Test-Driven Development (TDD) is a development process where tests are written before the actual code. The main steps involved in the TDD cycle are:
 1. Red: Write a test that fails.
 2. Green: Write the minimum code needed to make the test pass.
@@ -60,7 +60,7 @@ code functionality.
 Q: What are some tips for effectively implementing Test-Driven Development (TDD) in React applications?
 A: Some tips for effectively implementing Test-Driven Development (TDD) in React applications include starting with small components, mocking external dependencies,`
 
-        const finishReason: string = "length" */
+        const finishReason: string = "length"
 
         const pairs = data.split("\n\n")
 

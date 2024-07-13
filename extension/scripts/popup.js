@@ -1,5 +1,5 @@
 import { FlashcardSet } from "./classes.js"
-import { fetchFlashcards } from "./dummyData.js"
+import { fetchFlashcards } from "./openai.js"
 import { fetchMarkdown } from "./hashnode.js"
 import {
     removeFlashcards,

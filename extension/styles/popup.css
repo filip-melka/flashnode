@@ -105,6 +105,9 @@ div.hidden {
     font-size: 16px;
     line-height: 150%;
     transform: translateY(-10px);
+    overflow-y: auto;
+    line-height: 180%;
+    font-size: 15px;
 }
 #flashcard.appear {
     animation-name: appear;
@@ -118,6 +121,26 @@ div.hidden {
     to {
         transform: translateY(-10px);
     }
+}
+
+#flashcard::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Track */
+#flashcard::-webkit-scrollbar-track {
+    background: white;
+}
+
+/* Handle */
+#flashcard::-webkit-scrollbar-thumb {
+    background: #e0e0e0;
+    border-radius: 2px;
+}
+
+/* Handle on hover */
+#flashcard::-webkit-scrollbar-thumb:hover {
+    background: #c7c7c7;
 }
 
 /* summary */
