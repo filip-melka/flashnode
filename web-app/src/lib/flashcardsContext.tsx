@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react"
 
-type Flashcard = {
+export type Flashcard = {
     front: string
     back: string
 }
