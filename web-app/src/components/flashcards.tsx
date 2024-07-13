@@ -29,18 +29,18 @@ export function Flashcards() {
                 <AspectRatio ratio={8 / 5}>
                     <div
                         onClick={flip}
-                        className="cursor-pointer relative bg-card shadow rounded h-full w-full flex items-center justify-center p-8 overflow-y-auto hide-scrollbar"
+                        className="cursor-pointer relative bg-card shadow rounded h-full w-full flex flex-col gap-2 text-center items-center justify-center p-8 overflow-y-auto hide-scrollbar"
                     >
                         <span className="absolute top-3 left-3 opacity-50 text-sm">
                             {isFront ? "front" : "back"}
                         </span>
-                        <p className="text-center">
-                            {
-                                currentSet!.flashcards[index][
-                                    isFront ? "front" : "back"
-                                ]
-                            }
-                        </p>
+                        {currentSet!.flashcards[index][
+                            isFront ? "front" : "back"
+                        ]
+                            .split("\n")
+                            .map((line) => (
+                                <p>{line}</p>
+                            ))}
                     </div>
                 </AspectRatio>
             </div>
