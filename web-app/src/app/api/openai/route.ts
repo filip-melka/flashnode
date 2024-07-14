@@ -35,8 +35,6 @@ export async function POST(req: Request) {
             max_tokens: 200,
         })
 
-        console.log(JSON.stringify(res))
-
         const data = res.choices[0].message.content as string
         const finishReason = res.choices[0].finish_reason */
 

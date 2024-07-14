@@ -59,8 +59,28 @@
 }
 
 /* Hide scrollbar */
-/* Hide scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar,
 .hide-scrollbar::-webkit-scrollbar {
     display: none;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Track */
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: white;
+}
+
+/* Handle */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #f0f0f0;
+    border-radius: 2px;
+}
+
+/* Handle on hover */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #d6d6d6;
 }
