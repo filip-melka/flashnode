@@ -4,10 +4,10 @@ window.addEventListener("focus", function () {
 
 const body = document.getElementsByTagName("body")[0]
 body.style = "transition: filter 1s linear"
+body.style.overflowX = "hidden"
 
 function blurPage() {
     body.style.filter = "blur(3px)"
-    body.style.overflowX = "hidden"
     body.addEventListener("click", unblurPage)
 }
 
