@@ -101,17 +101,21 @@ div.hidden {
     border-radius: inherit;
     border: none;
     background: white;
-    padding: 10px;
-    font-size: 16px;
-    line-height: 150%;
     transform: translateY(-10px);
-    overflow-y: auto;
-    line-height: 180%;
-    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #flashcard.appear {
     animation-name: appear;
     animation-duration: 1s;
+}
+#flashcard-content {
+    overflow-y: auto;
+    max-height: calc(100% - 20px);
+    margin: 10px;
+    line-height: 180%;
+    font-size: 15px;
 }
 
 @keyframes appear {
@@ -123,23 +127,23 @@ div.hidden {
     }
 }
 
-#flashcard::-webkit-scrollbar {
+#flashcard-content::-webkit-scrollbar {
     width: 4px;
 }
 
 /* Track */
-#flashcard::-webkit-scrollbar-track {
+#flashcard-content::-webkit-scrollbar-track {
     background: white;
 }
 
 /* Handle */
-#flashcard::-webkit-scrollbar-thumb {
+#flashcard-content::-webkit-scrollbar-thumb {
     background: #f0f0f0;
     border-radius: 2px;
 }
 
 /* Handle on hover */
-#flashcard::-webkit-scrollbar-thumb:hover {
+#flashcard-content::-webkit-scrollbar-thumb:hover {
     background: #d6d6d6;
 }
 

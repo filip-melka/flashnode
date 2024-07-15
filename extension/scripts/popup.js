@@ -18,6 +18,7 @@ closeBtn.addEventListener("click", () => window.close())
 
 const progressBar = document.getElementById("bar")
 const flashcard = document.getElementById("flashcard")
+const flashcardContent = document.getElementById("flashcard-content")
 const nextBtn = document.getElementById("btn-next")
 const saveContainer = document.getElementById("save-container")
 const saveToggle = document.getElementById("save-btn")
@@ -84,7 +85,7 @@ function nextFlashcard() {
                 100
         )}%`
         currentSide = "front"
-        flashcard.innerHTML = currentFlashcard[currentSide]
+        flashcardContent.innerHTML = currentFlashcard[currentSide]
         flashcard.className = "appear"
     } else {
         changeTab(tabs.summary)
@@ -94,7 +95,7 @@ function nextFlashcard() {
 flashcard.addEventListener("click", () => {
     nextBtn.classList.remove("placeholder")
     currentSide = currentSide === "front" ? "back" : "front"
-    flashcard.innerText = currentFlashcard[currentSide]
+    flashcardContent.innerText = currentFlashcard[currentSide]
 })
 flashcard.addEventListener("animationend", () => {
     flashcard.classList.remove("appear")
