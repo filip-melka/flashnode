@@ -39,8 +39,8 @@ export function Flashcards() {
                                 isFront ? "front" : "back"
                             ]
                                 .split("\n")
-                                .map((line) => (
-                                    <p>{line}</p>
+                                .map((line, i) => (
+                                    <p key={i}>{line}</p>
                                 ))}
                         </div>
                     </div>
