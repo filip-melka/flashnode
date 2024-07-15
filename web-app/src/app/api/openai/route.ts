@@ -65,7 +65,6 @@ A: Some tips for effectively implementing Test-Driven Development (TDD) in React
         const flashcards: Flashcard[] = []
 
         pairs.forEach((pair) => {
-            console.log(pair)
             const q = pair.substring(3, pair.indexOf("A: "))
             const a = pair.substring(pair.indexOf("A: ") + 3)
 

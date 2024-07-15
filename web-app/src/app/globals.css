@@ -71,7 +71,7 @@ body::-webkit-scrollbar,
 
 /* Track */
 .custom-scrollbar::-webkit-scrollbar-track {
-    background: white;
+    background: transparent;
 }
 
 /* Handle */
@@ -79,8 +79,15 @@ body::-webkit-scrollbar,
     background: #f0f0f0;
     border-radius: 2px;
 }
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #171b35;
+    border-radius: 2px;
+}
 
 /* Handle on hover */
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #d6d6d6;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #202549;
 }
