@@ -81,12 +81,14 @@ export function addToList(list, url) {
 
 function removeFromList(list, url) {
     chrome.storage.local.get(list, (res) => {
-        const urls = res[list].filter((e) => e !== url) || []
+        if (res[list]) {
+            const urls = res[list].filter((e) => e !== url) || []
 
-        const obj = {}
-        obj[list] = urls
+            const obj = {}
+            obj[list] = urls
 
-        chrome.storage.local.set(obj)
+            chrome.storage.local.set(obj)
+        }
     })
 }
 
