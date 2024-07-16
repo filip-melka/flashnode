@@ -2,18 +2,24 @@ window.addEventListener("focus", function () {
     checkPage()
 })
 
-const body = document.getElementsByTagName("body")[0]
-body.style = "transition: filter 1s linear"
-body.style.overflowX = "hidden"
+const main = document.querySelector("main")
+if (main) {
+    main.style = "transition: filter 1s linear"
+    main.style.overflowX = "hidden"
+}
 
 function blurPage() {
-    body.style.filter = "blur(3px)"
-    body.addEventListener("click", unblurPage)
+    if (main) {
+        main.style.filter = "blur(3px)"
+        main.addEventListener("click", unblurPage)
+    }
 }
 
 function unblurPage() {
-    body.style.filter = "blur(0)"
-    body.removeEventListener("click", unblurPage)
+    if (main) {
+        main.style.filter = "blur(0)"
+        main.removeEventListener("click", unblurPage)
+    }
 }
 
 // user opens a different tab
