@@ -3,13 +3,10 @@ window.addEventListener("focus", function () {
 })
 
 const main = document.querySelector("main")
-if (main) {
-    main.style = "transition: filter 1s linear"
-    main.style.overflowX = "hidden"
-}
 
 function blurPage() {
     if (main) {
+        main.style = "transition: filter 1s linear"
         main.style.filter = "blur(3px)"
         main.addEventListener("click", unblurPage)
     }
@@ -17,6 +14,7 @@ function blurPage() {
 
 function unblurPage() {
     if (main) {
+        main.style = "transition: filter 1s linear"
         main.style.filter = "blur(0)"
         main.removeEventListener("click", unblurPage)
     }
