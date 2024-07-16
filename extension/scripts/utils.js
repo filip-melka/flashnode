@@ -14,6 +14,8 @@ export async function retrieveAllFlashcards() {
             flashcardsSets.push(flashcardsSet)
         })
 
+        clearList("new")
+
         return flashcardsSets
     } else {
         return []
