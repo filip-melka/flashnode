@@ -14,7 +14,13 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 })
 
 const closeBtn = document.getElementById("btn-close")
-closeBtn.addEventListener("click", () => window.close())
+closeBtn.addEventListener("click", () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        chrome.tabs.sendMessage(tabs[0].id, { action: "unblur" }, () => {
+            window.close()
+        })
+    })
+})
 
 const progressBar = document.getElementById("bar")
 const flashcard = document.getElementById("flashcard")

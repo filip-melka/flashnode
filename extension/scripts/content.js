@@ -38,6 +38,9 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
         sendResponse({
             url: window.location.href,
         })
+    } else if (request.action === "unblur") {
+        unblurPage()
+        sendResponse()
     }
 })
 
