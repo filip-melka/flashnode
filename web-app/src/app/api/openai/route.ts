@@ -6,7 +6,7 @@ const openai = new OpenAI({
 })
 
 function getPrompt(title: string, markdown: string) {
-    return `I have a markdown file containing a technical blog post. Please read the file and generate a set of questions and ansers based on the content of the markdown file.
+    return `I have a markdown file containing a technical blog post. Please read the file and generate a set of questions and answers based on the content of the markdown file.
 
 Example format:
 
