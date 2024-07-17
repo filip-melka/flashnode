@@ -34,7 +34,7 @@ export function Flashcards() {
                         <span className="absolute top-3 left-3 opacity-50 text-sm">
                             {isFront ? "front" : "back"}
                         </span>
-                        <div className="mx-7 mt-9 mb-7 overflow-y-scroll custom-scrollbar">
+                        <div className="mx-7 mt-9 mb-7 overflow-y-scroll custom-scrollbar leading-8">
                             {currentSet!.flashcards[index][
                                 isFront ? "front" : "back"
                             ]
