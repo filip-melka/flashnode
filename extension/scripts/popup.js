@@ -110,7 +110,7 @@ saveToggle.addEventListener("click", () => {
     if (saveToggle.classList.contains("off")) {
         saveStatus.innerText = "Save"
         saveToggle.classList.remove("off")
-        summaryMsg.innerHTML = "<p>Your Flashcards have been saved</p>"
+        summaryMsg.innerHTML = "<p>Your Flashcards are saved</p>"
         // save flashcards
         saveFlashcards(flashcardsSet)
     } else {
