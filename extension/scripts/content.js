@@ -6,16 +6,20 @@ const body = document.querySelector("body")
 const overlay = document.createElement("div")
 overlay.style =
     "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; transition: all 1s ease-out; z-index: 999;"
-body.appendChild(overlay)
 
 function blurPage() {
-    overlay.style.backdropFilter = "blur(3px)"
-    overlay.addEventListener("click", unblurPage)
+    body.appendChild(overlay)
+    setTimeout(() => {
+        overlay.style.backdropFilter = "blur(3px)"
+        overlay.addEventListener("click", unblurPage)
+    }, 200)
 }
 
 function unblurPage() {
-    overlay.style.backdropFilter = "blur(0px)"
-    overlay.removeEventListener("click", unblurPage)
+    overlay.style.backdropFilter = "blur(0)"
+    setTimeout(() => {
+        overlay.remove()
+    }, 1000)
 }
 
 // user opens a different tab
