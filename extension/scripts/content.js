@@ -2,22 +2,20 @@ window.addEventListener("focus", function () {
     checkPage()
 })
 
-const main = document.querySelector("main")
+const body = document.querySelector("body")
+const overlay = document.createElement("div")
+overlay.style =
+    "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; transition: all 1s ease-out; z-index: 999;"
+body.appendChild(overlay)
 
 function blurPage() {
-    if (main) {
-        main.style = "transition: filter 1s linear"
-        main.style.filter = "blur(3px)"
-        main.addEventListener("click", unblurPage)
-    }
+    overlay.style.backdropFilter = "blur(3px)"
+    overlay.addEventListener("click", unblurPage)
 }
 
 function unblurPage() {
-    if (main) {
-        main.style = "transition: filter 1s linear"
-        main.style.filter = "blur(0)"
-        main.removeEventListener("click", unblurPage)
-    }
+    overlay.style.backdropFilter = "blur(0px)"
+    overlay.removeEventListener("click", unblurPage)
 }
 
 // user opens a different tab
